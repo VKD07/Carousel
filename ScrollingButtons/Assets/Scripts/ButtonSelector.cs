@@ -17,10 +17,15 @@ public class ButtonSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SelectButton();
+    }
+
+    private void SelectButton()
+    {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out hit, 1000f, layerMask))
+        if (Physics.Raycast(ray, out hit, 1000f, layerMask))
         {
             videoManager.mediaPlayer.m_VideoPath = Application.streamingAssetsPath + "/" + "Video1.mp4";
             videoPlayer.SetActive(true);
