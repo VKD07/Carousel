@@ -53,6 +53,7 @@ public class ButtonSelector : MonoBehaviour
         ResetButtonposition();
     }
 
+
     private void SelectAndDragUp()
     {
         if (Input.GetKey(KeyCode.Mouse0))
@@ -149,6 +150,16 @@ public class ButtonSelector : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void RotateLeft()
+    {
+        m_btnParent.rotationSpeed = Mathf.Abs(m_btnParent.rotationSpeed);
+    }
+
+    public void RotateRight()
+    {
+        m_btnParent.rotationSpeed = -Mathf.Abs(m_btnParent.rotationSpeed);
     }
 
     private void IncreaseRotationSpeed()
