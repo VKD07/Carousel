@@ -59,7 +59,7 @@ public class LeapSelect : MonoBehaviour
             PlayButtonVideo();
             m_btnParent.StopParentRotation(true);
         }
-        else  if(!Physics.Raycast(ray, out hit, rayLength, layer) && !videoIsPlaying)
+        else if (!Physics.Raycast(ray, out hit, rayLength, layer) && !videoIsPlaying)
         {
             m_btnParent.StopParentRotation(false);
         }
@@ -73,7 +73,7 @@ public class LeapSelect : MonoBehaviour
         hit.transform.position = btnPos;
     }
 
-    private void PlayButtonVideo() 
+    private void PlayButtonVideo()
     {
         //if button reached desired height to play the video
         if (hit.transform.position.y >= m_maxHeightToPlay)
@@ -85,7 +85,7 @@ public class LeapSelect : MonoBehaviour
             videoManager.mediaPlayer.OpenVideoFromFile(videoManager.mediaPlayer.m_VideoLocation, m_btnParent.m_videoPaths[int.Parse(hit.transform.name)], true);
             leapBtnClose.SetActive(true);
         }
-      
+
     }
     private void ResetButtonposition()
     {
@@ -107,6 +107,11 @@ public class LeapSelect : MonoBehaviour
             }
             x = 0;
         }
+    }
+
+    public void Finger()
+    {
+        print("Extended");
     }
 
 
