@@ -10,8 +10,8 @@ public class VideoManager : MonoBehaviour
     [SerializeField] GameObject closeBtn;
     [SerializeField] ButtonParent m_btnParent;
     [SerializeField] ButtonSelector m_btnSelector;
-    [SerializeField] LeapSelect leapSelect;
-    [SerializeField] GameObject leapBtn;
+    //[SerializeField] LeapSelect leapSelect;
+    //[SerializeField] GameObject leapBtn;
     public MediaPlayer mediaPlayer;
     public bool playScreenSaver;
     
@@ -23,12 +23,12 @@ public class VideoManager : MonoBehaviour
 
     private void Update()
     {
-       // StopParentRotation();
+        StopParentRotation();
     }
 
     private void StopParentRotation()
     {
-        if (leapBtn.activeSelf)
+        if (closeBtn.activeSelf)
         {
             m_btnParent.StopParentRotation(true);
         }
@@ -55,7 +55,7 @@ public class VideoManager : MonoBehaviour
     public void StopVideo()
     {
         m_btnSelector.videoIsPlaying = false;
-        leapSelect.videoIsPlaying = false;
+        //leapSelect.videoIsPlaying = false;
         m_btnParent.StopParentRotation(false);
         mediaPlayer.Stop();
         PlayScreenSaver(true);

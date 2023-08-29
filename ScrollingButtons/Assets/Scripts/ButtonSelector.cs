@@ -48,7 +48,7 @@ public class ButtonSelector : MonoBehaviour
         {
             //drag and drop
             SelectAndDragUp();
-            PlayButtonVideo();
+            PlayButtonVideo(hit.transform.gameObject);
         }
         ResetButtonposition();
     }
@@ -56,7 +56,7 @@ public class ButtonSelector : MonoBehaviour
 
     private void SelectAndDragUp()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.U))
         {
             btnPos = new Vector3(hit.transform.position.x, Mathf.Clamp(hit.point.y, 0f, 4f), hit.transform.position.z);
             m_btnParent.StopParentRotation(true);
@@ -67,7 +67,7 @@ public class ButtonSelector : MonoBehaviour
         }
     }
 
-    private void PlayButtonVideo()
+    public void PlayButtonVideo(GameObject hit)
     {
         //if button reached desired height to play the video
         if (hit.transform.position.y >= m_maxHeightToPlay)
@@ -75,7 +75,7 @@ public class ButtonSelector : MonoBehaviour
             //hit.transform.position = btnNormalPos;
             //PlayVideo
             videoIsPlaying = true;
-            videoManager.mediaPlayer.OpenVideoFromFile(videoManager.mediaPlayer.m_VideoLocation, m_btnParent.m_videoPaths[int.Parse(hit.transform.name)], true);
+            videoManager.mediaPlayer.OpenVideoFromFile(videoManager.mediaPlayer.m_VideoLocation, m_btnParent.m_videoPaths[int.Parse(hit.name)], true);
             videoManager.ShowCloseButton(true);
         }
     }
@@ -88,7 +88,7 @@ public class ButtonSelector : MonoBehaviour
         //        hit.transform.position = btnNormalPos;
         //    }
         //}
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.U))
         {
             //btnNormalPos = new Vector3(hit.transform.position.x, 0f, hit.transform.position.z);
             //hit.transform.position = btnNormalPos;
